@@ -8,6 +8,13 @@ Touching the screen brings up the menu. Time can be set manually or by NTP with 
 above. The Jupiter app shows the current arrangement of Jupiter's four largest moons. The battery app gives the
 volage, current, and battery percent remaining. Temp gives the board temperature. There is a pointless demo of the
 acceleronmeter.  The wifi scanner shows signal strength and marks encrypted networks with *.
+
+	# Important!!!
+	Before opening the GrumpyWatch.ino in Arduino
+	edit the user_cfg.h.example and rename it to user_cfg.h
+	
+I strongly recommend adding user_cfg.h to .gitignore in case you want to contribute you don't want to risk exposing
+your credentials.
 	
 This should work with ofher TTGO watches if config.h is edited to match your model.
 

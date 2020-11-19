@@ -1,7 +1,7 @@
 // put user info in here to keep from being put on github.
 
-#define wlSSID1 "SSID Name"
-#define wlPASS1 "Password"
+#define wlSSID1 "WiFi-Network-Name"
+#define wlPASS1 "Password-Here"
 
 //#define wlSSID2 *network*
 //#define wlPASS2 *pass*

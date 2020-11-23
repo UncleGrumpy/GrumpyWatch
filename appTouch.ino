@@ -1,9 +1,9 @@
 // Check out the touch screen
 // Will display the x and y coordinates of where you touch
-// for 10 seconds and then return to time
+// for 5 seconds and then return to time
 
 void appTouch() {
-  uint32_t endTime = millis() + 10000; // Timeout at 10 seconds
+  uint32_t endTime = millis() + 5000; // Timeout at 5 seconds
   int16_t x, y;
   ttgo->tft->fillScreen(TFT_BLACK);
 

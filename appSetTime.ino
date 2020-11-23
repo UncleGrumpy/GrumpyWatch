@@ -11,7 +11,7 @@ void appSetTime() {
   mmonth = tnow.month;
   yyear = tnow.year;
 
-//Set up the interface buttons
+  //Set up the interface buttons
 
   ttgo->tft->fillScreen(TFT_BLACK);
   ttgo->tft->fillRect(0, 35, 80, 50, TFT_BLUE);

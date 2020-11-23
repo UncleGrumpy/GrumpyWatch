@@ -9,4 +9,6 @@
 // the offsetNTP is number of seconds offset from GMT.
 #define offsetNTP -25200 // PST - America/Los_Angeles (-7hrs)
 //#define offsetNTP -28800 // PDT - America/Los_Angeles (-8hrs)
-//#define offsetNTP 0 // GMT
+//#define offsetNTP 0 // UTC
+
+#define disptime 20

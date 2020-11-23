@@ -3,10 +3,14 @@
 // In the original Instructable. s such, it redraws GUI
 // every minute so you will see a little flicker.
 
+#include <esp_sleep.h>
+
 void displayTime(boolean fullUpdate) {
   ttgo->power->adc1Enable(AXP202_VBUS_VOL_ADC1 | AXP202_VBUS_CUR_ADC1 | AXP202_BATT_CUR_ADC1 | AXP202_BATT_VOL_ADC1, true);
 
-  // Get the current data
+  //bool irq = false;
+
+  // Get the current date
   RTC_Date tnow = ttgo->rtc->getDateTime();
 
   hh = tnow.hour;
@@ -70,8 +74,12 @@ void displayTime(boolean fullUpdate) {
     ttgo->tft->setTextColor(TFT_GREENYELLOW);
     ttgo->tft->drawString(String(dday), 50, 188, 6);
 
-    // Turn off the battery adc
+    // Turn off the battery adc <-- WHY!!!!
     ttgo->power->adc1Enable(AXP202_VBUS_VOL_ADC1 | AXP202_VBUS_CUR_ADC1 | AXP202_BATT_CUR_ADC1 | AXP202_BATT_VOL_ADC1, false);
+
+    // Setup wake button
+    ttgo->power->enableIRQ(AXP202_PEK_SHORTPRESS_IRQ, true);
+    ttgo->power->clearIRQ();
 
     // Draw Month
     String mStr;
@@ -93,11 +101,32 @@ void displayTime(boolean fullUpdate) {
     ttgo->tft->drawString(mStr, 9, 194, 2);
   }
 
-  // Build a bargraph every 10 seconds
-  int secmod = ss % 10;
-  if (secmod) { // Show growing bar every 10 seconds
-    ttgo->tft->fillRect(126 + secmod * 10, 215, 6, 15, TFT_ORANGE);
+  // Build a bargraph for 10 seconds...
+  // makinkg sure to show at least 1 complete cycle.
+  //count = 0;
+  rs = tnow.second;
+  int secmod = rs % 10; // Show growing bar for 10 seconds
+  if (secmod) { 
+    ttgo->tft->fillRect(126 + secmod * 10, 215, 6, 15, TFT_ORANGE);  
   } else {
-    ttgo->tft->fillRoundRect(119, 210, 120, 29, 15, TFT_DARKCYAN);
-  }
+      ttgo->tft->fillRoundRect(119, 210, 120, 29, 15, TFT_DARKCYAN);
+      count = count + 1;
+    }
+  if (count > disptime) {
+    count = 0;
+    ttgo->displaySleep();
+    WiFi.mode(WIFI_OFF);
+    //setCpuFrequencyMhz(20);
+    ttgo->power->enableIRQ(AXP202_PEK_SHORTPRESS_IRQ, true);
+    ttgo->power->setPowerOutPut(AXP202_LDO2, false);
+    ttgo->power->enableIRQ(AXP202_PEK_SHORTPRESS_IRQ, true);
+    ttgo->power->clearIRQ();
+    esp_sleep_enable_ext1_wakeup(GPIO_SEL_35, ESP_EXT1_WAKEUP_ALL_LOW);
+    count = 0;
+    ttgo->powerOff();
+    esp_deep_sleep_start();
+    return;
+  } else {
+      count = count + 1;
+    }
 }

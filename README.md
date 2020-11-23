@@ -12,10 +12,11 @@ acceleronmeter, touch and hall sensor.  The wifi scanner shows signal strength a
 
    Warning:
 -
-	Before opening the GrumpyWatch.ino in Arduino copy user_cfg.h.example it to user_cfg.h
+	Before opening the GrumpyWatch.ino in Arduino:
+	  copy user_cfg.h.example it to user_cfg.h
 
-	Edit the wifi and timezone info for setting the clock over wifi with NTP.
-	The dispay timeout is also set here.
+	This file is used to configure the wifi and timezone info for
+	setting the clock with NTP. The dispay timeout is also set here.
 	
 
 I strongly recommend adding user_cfg.h to .gitignore in case you want to contribute you don't want to risk exposing

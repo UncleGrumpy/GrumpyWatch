@@ -77,10 +77,6 @@ void displayTime(boolean fullUpdate) {
     // Turn off the battery adc <-- WHY!!!!
     ttgo->power->adc1Enable(AXP202_VBUS_VOL_ADC1 | AXP202_VBUS_CUR_ADC1 | AXP202_BATT_CUR_ADC1 | AXP202_BATT_VOL_ADC1, false);
 
-    // Setup wake button
-    ttgo->power->enableIRQ(AXP202_PEK_SHORTPRESS_IRQ, true);
-    ttgo->power->clearIRQ();
-
     // Draw Month
     String mStr;
     switch (mmonth) {
@@ -123,9 +119,8 @@ void displayTime(boolean fullUpdate) {
     ttgo->power->clearIRQ();
     esp_sleep_enable_ext1_wakeup(GPIO_SEL_35, ESP_EXT1_WAKEUP_ALL_LOW);
     count = 0;
-    ttgo->powerOff();
+    //ttgo->powerOff();
     esp_deep_sleep_start();
-    return;
   } else {
       count = count + 1;
     }

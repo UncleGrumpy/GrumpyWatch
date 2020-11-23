@@ -49,8 +49,6 @@ void setup() {
 
   // Turn on the IRQ used
   ttgo->power->adc1Enable(AXP202_BATT_VOL_ADC1 | AXP202_BATT_CUR_ADC1 | AXP202_VBUS_VOL_ADC1 | AXP202_VBUS_CUR_ADC1, AXP202_ON);
-  //ttgo->power->enableIRQ(AXP202_PEK_SHORTPRESS_IRQ, true);
-  //ttgo->power->clearIRQ();
 
   // Turn off unused power  
   ttgo->power->setPowerOutPut(AXP202_EXTEN, AXP202_OFF);
@@ -74,7 +72,7 @@ void buzz() {
 
 }
 
-void update_step_counter (void) {
+void update_step_counter(void) {
   // updateStepCounter(ttgo->bma->getCounter());
   step_counter = ttgo->bma->getCounter();
 

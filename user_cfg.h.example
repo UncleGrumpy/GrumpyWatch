@@ -6,9 +6,12 @@
 //#define wlSSID2 *network*
 //#define wlPASS2 *pass*
 
-// the offsetNTP is number of seconds offset from GMT.
-#define offsetNTP -25200 // PST - America/Los_Angeles (-7hrs)
-//#define offsetNTP -28800 // PDT - America/Los_Angeles (-8hrs)
+// the offsetNTP is number of seconds offset from UTC.
+//#define offsetNTP -18000 // America/New_York (-5hrs)
+//#define offsetNTP -21600  // America/Chicago (-6hrs)
+//#define offsetNTP -25200  // America/Denver (-7hrs)
+#define offsetNTP -28800 //  America/Los_Angeles (-8hrs)
 //#define offsetNTP 0 // UTC
 
-#define disptime 20
+// Active display time in seconds before sleep.
+#define disptime 20 

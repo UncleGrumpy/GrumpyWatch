@@ -10,15 +10,13 @@ above. The Jupiter app shows the current arrangement of Jupiter's four largest m
 volage, current, and battery percent remaining. Temp gives the board temperature. There are pointless demos of the
 acceleronmeter, touch and hall sensor.  The wifi scanner shows signal strength and marks encrypted networks with *.
 
-   Warning:
--
-	Before opening the GrumpyWatch.ino in Arduino:
-	  copy user_cfg.h.example it to user_cfg.h
+## Warning:
+#### Before opening the GrumpyWatch.ino in Arduino:
+	copy user_cfg.h.example >> user_cfg.h
 
-	This file is used to configure the wifi and timezone info for
-	setting the clock with NTP. The dispay timeout is also set here.
+
+user_cfg.h is used to configure wifi and timezone info for setting the clock with NTP. The display timeout is also set here.
 	
-
 I strongly recommend adding user_cfg.h to .gitignore in case you want to contribute you don't want to risk exposing
 your credentials.
 	

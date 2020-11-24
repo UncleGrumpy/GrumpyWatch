@@ -5,8 +5,8 @@
 #include "user_cfg.h"
 
 void appWiFiTime() {
-
-  // WiFi settings ******* Use your network values **********
+  
+  // **** Network and NTP settings from 
   const char* ssid     = wlSSID1;
   const char* password = wlPASS1;
   const long gmtOffset_sec = offsetNTP;

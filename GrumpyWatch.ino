@@ -50,7 +50,7 @@ void setup() {
   // Turn on the IRQ used
   ttgo->power->adc1Enable(AXP202_BATT_VOL_ADC1 | AXP202_BATT_CUR_ADC1 | AXP202_VBUS_VOL_ADC1 | AXP202_VBUS_CUR_ADC1, AXP202_ON);
 
-  // Turn off unused power  
+  // Turn off unused power
   ttgo->power->setPowerOutPut(AXP202_EXTEN, AXP202_OFF);
   ttgo->power->setPowerOutPut(AXP202_DCDC2, AXP202_OFF);
   ttgo->power->setPowerOutPut(AXP202_LDO3, AXP202_OFF); // audio device

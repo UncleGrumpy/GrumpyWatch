@@ -78,20 +78,20 @@ void displayTime(boolean fullUpdate) {
     ttgo->power->adc1Enable(AXP202_VBUS_VOL_ADC1 | AXP202_VBUS_CUR_ADC1 | AXP202_BATT_CUR_ADC1 | AXP202_BATT_VOL_ADC1, false);
 
     // Draw Month
-    String mStr;
+    char mStr[4] = {"\0"};
     switch (mmonth) {
-      case 1: mStr = "Jan"; break;
-      case 2: mStr = "Feb"; break;
-      case 3: mStr = "Mar"; break;
-      case 4: mStr = "Apr"; break;
-      case 5: mStr = "May"; break;
-      case 6: mStr = "Jun"; break;
-      case 7: mStr = "Jul"; break;
-      case 8: mStr = "Aug"; break;
-      case 9: mStr = "Sep"; break;
-      case 10: mStr = "Oct"; break;
-      case 11: mStr = "Nov"; break;
-      case 12: mStr = "Dec"; break;
+      case 1: strcat(mStr, "Jan"); break;
+      case 2: strcat(mStr, "Feb"); break;
+      case 3: strcat(mStr, "Mar"); break;
+      case 4: strcat(mStr, "Apr"); break;
+      case 5: strcat(mStr, "May"); break;
+      case 6: strcat(mStr, "Jun"); break;
+      case 7: strcat(mStr, "Jul"); break;
+      case 8: strcat(mStr, "Aug"); break;
+      case 9: strcat(mStr, "Sep"); break;
+      case 10: strcat(mStr, "Oct"); break;
+      case 11: strcat(mStr, "Nov"); break;
+      case 12: strcat(mStr, "Dec"); break;
     }
     ttgo->tft->setTextColor(TFT_WHITE);
     ttgo->tft->drawString(mStr, 9, 194, 2);
@@ -102,8 +102,8 @@ void displayTime(boolean fullUpdate) {
   //count = 0;
   rs = tnow.second;
   int secmod = rs % 10; // Show growing bar for 10 seconds
-  if (secmod) { 
-    ttgo->tft->fillRect(126 + secmod * 10, 215, 6, 15, TFT_ORANGE);  
+  if (secmod) {
+    ttgo->tft->fillRect(126 + secmod * 10, 215, 6, 15, TFT_ORANGE);
   } else {
       ttgo->tft->fillRoundRect(119, 210, 120, 29, 15, TFT_DARKCYAN);
       count = count + 1;
